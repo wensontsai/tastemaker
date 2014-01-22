@@ -22,20 +22,21 @@
     </div>
     <!-- /.navbar-wrapper -->
 
+
           <!--main content -->
     <div class="body_stuff">
           <br><br><br>
-            <h3>Subscribers </h3>
+            <h2>Subscribers </h2>
             <br>
         <% @subscribers = Subscriber.all %>
         <% if @subscribers.length > 0 %>
             <table id="subscribers_all">
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Company</th>
-                <th>Website</th>
-                <th>Message</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>COMPANY</th>
+                <th>WEBSITE</th>
+                <th>MESSAGE</th>
               </tr>
                   <% @subscribers.each do |subscriber| %>
                     <tr id='row<%=subscriber.id%>'>
@@ -44,7 +45,6 @@
                             <td><%= subscriber.company %></td>
                             <td><%= subscriber.website %></td>
                             <td><%= subscriber.message %></td>
-
                             <td>
                               <button id='delete_<%=subscriber.id%>'>Delete</button>
                             </td>
@@ -85,23 +85,27 @@ var subscriber_length = <%= @subscribers.length %>;
     }
   }
 
+
+
   <% @subscribers.each do |subscriber| %>
     $('#delete_<%=subscriber.id%>').click(function () {
       $.ajax({
         url: "<%=subscriber_path(subscriber.id)%>",
-        type: "post",  //deletes are sent as POST
+        type: "post",
         dataType: "json",
         data: {"_method":"delete"},
         success: function(response) {
           if (response.success) {
             removeRow(<%=subscriber.id%>);
           }else {
-            alert('deleting favorite item failed, sorry!');
+            alert('deleting subscriber info failed, sorry!');
           }
         }
       });
     });
   <% end %>
+
+
 });
 </script>
 

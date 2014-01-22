@@ -17,7 +17,12 @@
   height: 676px;
 }
 
-#subscribers_all th, td {
+#subscribers_all th{
+  text-align: left;
+  padding: 10px 60px 10px 25px;
+}
+
+#subscribers_all td{
   text-align: left;
   padding-right: 60px;
 }

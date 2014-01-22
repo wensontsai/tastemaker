@@ -15,15 +15,15 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.create(subscriber_params)
 
     render json: {}
-    respond_to do |format|
-      if @subscriber.save
-        format.html { redirect_to @subscriber, notice: 'A favorite place was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @subscriber }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @subscriber.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @subscriber.save
+    #     format.html { redirect_to @subscriber, notice: 'A favorite place was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @subscriber }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @subscriber.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
 
@@ -36,7 +36,7 @@ class SubscribersController < ApplicationController
     end
 
     # respond_to do |format|
-    #   format.html { redirect_to favorite_place_url }
+    #   format.html { redirect_to subscriber_url }
     #   format.json { head :no_content }
     # end
 
@@ -50,7 +50,7 @@ class SubscribersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
-      params.permit(:name, :email, :company, :website, :message)
+      params.permit(:id, :name, :email, :company, :website, :message)
     end
 
 
