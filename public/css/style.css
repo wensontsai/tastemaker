@@ -203,7 +203,7 @@ em {
 }
 .navbar .brand a {
 	padding: 0;
-	color: #004f00;
+	color: #A02422;
 	font-size: 1.75em;
 	margin-left: 0;
 	font-weight: normal;
@@ -211,7 +211,7 @@ em {
 }
 .navbar .brand a:hover {
 	text-decoration: none;
-	color:#D0A9AA;
+	color: #D0A9AA;
  transition: color .15s linear;
  -webkit-transition: color .15s linear;
  -moz-transition: color .15s linear;
@@ -239,7 +239,7 @@ ul#menu-main > li > a {
 	font-family: 'Julius Sans One', cursive;
 	font-weight: normal;
 	font-size: 1em;
-	color: #004f00;
+	color: #A02422;
 }
 /*ul#menu-main > li > a:hover {
 	background: #7BCC70;
