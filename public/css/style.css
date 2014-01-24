@@ -272,7 +272,7 @@ nav a.active{
 ---------------------------------------------------------------------------------------------------------- */
 #headerwrap {
 	width: 100%;
-	background: url(../img/foodiieie.jpg) #0b333f no-repeat center center fixed;
+	background: url(../img/GTC-Food-378-1536x1024.jpg) #0b333f no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -374,8 +374,8 @@ section.single-page h1 {
 	font-size: 2.25em; /* 36px */
 }
 #feature {
-	background: url("../img/lushpatt.png") repeat-x 0 0;
-	height: 406px;
+	background: url("../img/1.jpg") repeat-x 0 0;
+	height: 240px;
 	z-index: 500;
 	box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
@@ -446,12 +446,13 @@ section#portfolio .align {
 }
 /* Portfolio Image Hover */
 .mask2 img {
+	border-radius: 15px;
 	margin: 0 auto;
 	max-width: 100%;
 	display: block;
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	filter: alpha(opacity=80);
-	opacity: 0.8;
+/*	opacity: 0.8;*/
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -511,7 +512,7 @@ section#services .span3:hover {
 
 section#testimonials {
 	height:  647px;
-	background: url("../img/lushpatt.png") repeat-x 0 0;
+	background: url("../img/1.jpg") repeat-x 0 0;
 	padding: 0;
 	color: #e4e5e2;
 	z-index: 500;
@@ -588,7 +589,7 @@ article .inside {
 section#team, section#contact {
 	color: #e4e5e2;
 /*	background: url("../img/flowaz.png") repeat-x 0 0;*/
-	background:#551033;
+	background:#660000;
 }
 section#team .align, section#contact .align {
 	font-size: 6em;
