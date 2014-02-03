@@ -26,3 +26,12 @@
   text-align: left;
   padding-right: 60px;
 }
+
+#login_info {
+  padding-left: 20px;
+  font-size: .6em;
+}
+
+#login_info a{
+  padding: 0 0 0 0;
+}

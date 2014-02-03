@@ -14,6 +14,13 @@
                 <li><a title="news" href="#news">Pricing</a></li>
                <!--  <li><a title="team" href="#team">meet the team</a></li> -->
                 <li><a title="contact" href="#contact">Get Started</a></li>
+                <li id="login_info">
+                  <%= render 'layouts/user_widget' %>
+                  <!--   <% if user_signed_in? %>
+                       You are logged in as <%= @current_user %>
+                    <% end %> -->
+                </li>
+
               </ul>
             </nav>
           </div>
@@ -33,6 +40,9 @@
         <div class="container">
           <div class="row">
             <div id="main-landing" class="span12">
+
+
+
               <!-- <h2>From the convenience of your own home</h2> -->
              <!--  <input type="text" name="your-email" placeholder="you@yourmail.com" class="cform-text" size="40" title="your email">
               <input type="submit" value="Notify me" class="cform-submit"> -->
