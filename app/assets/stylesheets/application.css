@@ -39,3 +39,7 @@
 .devise input[type=submit] {
   width: 220px;
 }
+
+.devise {
+   padding-top: 60px;
+}
