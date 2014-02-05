@@ -1,7 +1,7 @@
 class SubscribersController < ApplicationController
 
   def index
-    @subscriber = Subscriber.all
+    @subscribers = Subscriber.all
   end
 
   def show

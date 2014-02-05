@@ -1,11 +1,13 @@
 Tastemaker::Application.routes.draw do
 
+  get "accounts/index"
   devise_for :admins
   devise_for :users
   root :to => "home#index"
 
   post "add_to_subscribers" => "subscribers#create", :via => :post
   resources :subscribers
+  resources :accounts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
