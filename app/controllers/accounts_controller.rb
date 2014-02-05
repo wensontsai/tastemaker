@@ -13,7 +13,6 @@ class AccountsController < ApplicationController
 
   def create
     @user = User.create(user_params)
-
     render json: {}
     # respond_to do |format|
     #   if @user.save
@@ -29,11 +28,11 @@ class AccountsController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.destroy
-      render json: {success:true}
-    else
-      render json: {success:false}
-    end
+      if @user.destroy
+        render json: {success:true}
+      else
+        render json: {success:false}
+      end
 
     # respond_to do |format|
     #   format.html { redirect_to account_url }
@@ -42,6 +41,37 @@ class AccountsController < ApplicationController
 
   end
 
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      redirect_to @user, :notice => "Account has been successfully updated!"
+    else
+      render :action => "edit"
+    end
+  end
+
+
+
+  def approve_account
+    id = params[:id]
+    @user = User.find(id)
+    @user.update_attributes(:approved => true)
+
+    render json: {}
+  end
+
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -49,7 +79,7 @@ class AccountsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def subscriber_params
+    def user_params
       params.permit(:id, :email, :admin, :approved)
     end
 

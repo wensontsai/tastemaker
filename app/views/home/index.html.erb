@@ -138,37 +138,40 @@
       <div class="container">
         <div class="align"><i class="icon-cog-circled"></i></div>
         <h1>How it Works</h1>
-        <!-- Four columns -->
+
+        <!-- three columns -->
         <div class="row">
 
           <div class="span4">
             <div class="align"> <i class="icon-pencil sev_icon"></i> </div>
             <h2>Subscribe</h2>
-            <p>for your monthly delivery. Make sure to let us know if you have any dietary restrictions! </p>
+            <p>For your monthly delivery. Make sure to let us know if you have any dietary restrictions! </p>
           </div>
-          <!-- /.span3 -->
+          <!-- /.span4 -->
           <div class="span4">
             <div class="align"> <i class="icon-mail sev_icon"></i> </div>
             <h2>Receive</h2>
-            <p>a specially curated, theme-based dessert the 2nd week of each month!</p>
+            <p>A specially curated, theme-based dessert the 2nd week of each month!</p>
           </div>
-          <!-- /.span3 -->
+          <!-- /.span4 -->
           <div class="span4">
             <div class="align"> <i class="icon-food sev_icon"></i> </div>
             <h2>Eat</h2>
-            <p>and share great desserts from the best local establishments at your convenience.</p>
+            <p>And share great desserts from the best local establishments at your convenience.</p>
           </div>
-          <!-- /.span3 -->
-       <!--    <div class="span3">
-            <div class="align"> <i class="icon-mobile-1 sev_icon"></i> </div>
-            <h2>Marketing</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-          </div> -->
-          <!-- /.span3 -->
+
         </div>
         <!-- /.row -->
+<br><br><br><br><br><br><br>
+        <div class="row">
+          <center><a href="#">check out our latest offerings!</a></center>
+        </div>
+
       </div>
       <!-- /.container -->
+
+
+
     </section>
     <hr>
 
@@ -324,45 +327,69 @@
       <div class="container">
         <div class="align"><i class="icon-mail-2"></i></div>
         <h1>Get Started</h1>
-        <div class="row">
-          <div class="span12">
-            <div class="cform" id="theme-form">
-              <form action="#" method="post" class="cform-form">
-                <div class="row">
-                  <div class="span6"> <span class="your-name">
-                    <input type="text" id="your-name" placeholder="Your Name" class="cform-text" size="40" title="your name">
-                    </span> </div>
-                  <div class="span6"> <span class="your-email">
-                    <input type="text" id="your-email" placeholder="Your Email" class="cform-text" size="40" title="your email">
-                    </span> </div>
+      <!--
+              <div class="row">
+                <div class="span12">
+                  <div class="cform" id="theme-form">
+                    <form action="#" method="post" class="cform-form">
+                      <div class="row">
+                        <div class="span6"> <span class="your-name">
+                          <input type="text" id="your-name" placeholder="Your Name" class="cform-text" size="40" title="your name">
+                          </span> </div>
+                        <div class="span6"> <span class="your-email">
+                          <input type="text" id="your-email" placeholder="Your Email" class="cform-text" size="40" title="your email">
+                          </span> </div>
+                      </div>
+                      <div class="row">
+                        <div class="span6"> <span class="company">
+                          <input type="text" id="company" placeholder="Your Company" class="cform-text" size="40" title="company">
+                          </span> </div>
+                        <div class="span6"> <span class="website">
+                          <input type="text" id="website" placeholder="Your Website" class="cform-text" size="40" title="website">
+                          </span> </div>
+                      </div>
+                      <div class="row">
+                        <div class="span12"> <span class="message">
+                          <textarea id="message" class="cform-textarea" cols="40" rows="10" title="drop us a line."></textarea>
+                          </span> </div>
+                      </div>
+                      <div>
+                        <input type="submit" value="Subscribe Me!" class="cform-submit pull-left" >
+                      </div>
+                      <div class="cform-response-output"></div>
+                    </form>
+                  </div>
                 </div>
-                <div class="row">
-                  <div class="span6"> <span class="company">
-                    <input type="text" id="company" placeholder="Your Company" class="cform-text" size="40" title="company">
-                    </span> </div>
-                  <div class="span6"> <span class="website">
-                    <input type="text" id="website" placeholder="Your Website" class="cform-text" size="40" title="website">
-                    </span> </div>
-                </div>
-                <div class="row">
-                  <div class="span12"> <span class="message">
-                    <textarea id="message" class="cform-textarea" cols="40" rows="10" title="drop us a line."></textarea>
-                    </span> </div>
-                </div>
-                <div>
-                  <input type="submit" value="Send message" class="cform-submit pull-left" >
+              </div> -->
+              <!-- /.row -->
+                <div class="devise get_started">
+                  <h2>Sign up</h2>
+                      <br>
+                      * * * For our inaugural launch, only 100 accounts will be approved.
+                      <br>
+                      Sign-up today and wait for your confirmation email! * * *
+                      <br><br>
+                      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                        <%= devise_error_messages! %>
 
+                        <div><%= f.label :email %><br />
+                        <%= f.email_field :email, :autofocus => true %></div>
 
+                        <div><%= f.label :password %><br />
+                        <%= f.password_field :password %></div>
+
+                        <div><%= f.label :password_confirmation %><br />
+                        <%= f.password_field :password_confirmation %></div>
+
+                        <div><%= f.submit "Sign up" %></div>
+                      <% end %>
+
+                      <%= render "devise/shared/links" %>
                 </div>
-                <div class="cform-response-output"></div>
-              </form>
-            </div>
-          </div>
-          <!-- ./span12 -->
-        </div>
-        <!-- /.row -->
       </div>
       <!-- /.container -->
+
+
     </section>
 
     <!-- Loading the javaScript at the end of the page -->
@@ -391,31 +418,31 @@
 
   <!-- javascripts separate from template -->
 <script>
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    $("input[type=submit]").click(function(event){
+//     $("input[type=submit]").click(function(event){
 
-      event.preventDefault();
-          var name = $("#your-name").val();   // var name = $(this.el).find('#your-name').val();
-          var email = $("#your-email").val();
-          var company = $("#company").val();
-          var website = $("#website").val();
-          var message = $("#message").val();
+//       event.preventDefault();
+//           var name = $("#your-name").val();   // var name = $(this.el).find('#your-name').val();
+//           var email = $("#your-email").val();
+//           var company = $("#company").val();
+//           var website = $("#website").val();
+//           var message = $("#message").val();
 
-          $.ajax({
-            type: "POST",
-            url: "/add_to_subscribers",
-            data: {name: name, email: email, company: company, website: website, message: message},
-            success: alert(email +' has been added to our subscription list!  Stay tuned for updates!')
-          });
+//           $.ajax({
+//             type: "POST",
+//             url: "/add_to_subscribers",
+//             data: {name: name, email: email, company: company, website: website, message: message},
+//             success: alert(email +' has been added to our subscription list!  Stay tuned for updates!')
+//           });
 
-          $('#your-name').val('');
-          $('#your-email').val('');
-          $('#company').val('');
-          $('#website').val('');
-          $('#message').val('');
+//           $('#your-name').val('');
+//           $('#your-email').val('');
+//           $('#company').val('');
+//           $('#website').val('');
+//           $('#message').val('');
 
-    });
+//     });
 
 
 

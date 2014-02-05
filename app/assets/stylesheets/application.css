@@ -17,6 +17,7 @@
   height: 676px;
 }
 
+
 #subscribers_all th{
   text-align: left;
   padding: 10px 60px 10px 25px;
@@ -44,3 +45,6 @@
    padding-top: 60px;
 }
 
+.get_started {
+  padding: 0 0 70px 0;
+}

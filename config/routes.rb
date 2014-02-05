@@ -7,6 +7,8 @@ Tastemaker::Application.routes.draw do
 
   post "add_to_subscribers" => "subscribers#create", :via => :post
   resources :subscribers
+
+  put "approve_account" => "accounts#approve_account", :via => :put
   resources :accounts
 
   # The priority is based upon order of creation: first created -> highest priority.

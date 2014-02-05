@@ -41,28 +41,44 @@
                     <th>IS ADMIN?</th>
                     <th>APPROVED?</th>
                   </tr>
+                <% need_approve_count = 0 %>
               <% @users = User.all %>
               <% @users.each do |user| %>
                         <tr id='row<%=user.id%>'>
-                                <td><%= user.id %></td>
-                                <td><%= user.email %></td>
-                                <td><%= user.admin %></td>
-                                <td><%= user.approved %></td>
-                                <% if user.approved == false %>
+                          <td><%= user.id %></td>
+                          <td><%= user.email %></td>
+                          <td><%= user.admin %></td>
+                          <td><%= user.approved %></td>
+                              <% if user.approved == false %>
+                                <% need_approve_count += 1 %>
                                   <td>
-                                    <button id='approve_<%=user.id%>'>Approve Account [auto sends email]</button>
+                                    <button id='approve_<%=user.id%>'>Approve Account</button>
                                   </td>
-                                <% end %>
-                                <td>
-                                  <button id='delete_<%=user.id%>'>Delete</button>
-                                </td>
+                              <% end %>
+                          <td>
+                            <button id='delete_<%=user.id%>' data-approved='<%=user.approved%>'>Delete</button>
+                          </td>
                         </tr>
                       <% end %>
                 </table>
 
-                <br><br>
+                <br><br><br>
                 <div id="account_total">
-                    total accounts = <%= @users.length %>
+                  <% if @users.length == 1 %>
+                    There is currently 1 account.
+                  <% else %>
+                    There are currently <%= @users.length %> total accounts.
+                  <% end %>
+                </div>
+
+                    <br><br>
+
+                <div id="still_need_approve">
+                  <% if need_approve_count === 1 %>
+                    1 account is awaiting approval
+                  <% else %>
+                    <%= need_approve_count %> accounts are awaiting approval.
+                  <% end %>
                 </div>
         </div>
 
@@ -70,28 +86,51 @@
         $(function() {
 
         var users_length = <%= @users.length %>;
+        var pending_length = <%= need_approve_count %>;
 
+    // DELETING ACCOUNTS
+        // updates running account total
+        // updates running pending approvals totals too
 
-          function updateLength() {
-            $('#account_total').html('total accounts = ' +users_length)
+          function updateLength(users_length) {
+            if (users_length === 1){
+              var output = "There is currently 1 account";
+            } else {
+              var output = "There are currently " +users_length+ " total accounts.";
+            }
+
+              $('#account_total').html(output)
           }
 
 
-          function removeRow(id) {
+
+        // removes row account is in
+          function removeRow(id, approved) {
+
             $('#row'+id).fadeOut();
             users_length--;
+            updateLength(users_length);
 
-            updateLength();
+            if(approved["approved"] == false){
+              pending_length--;
+            }
+            updatePendingApprovals(pending_length);
+
 
             if(users_length === 0) {
-              $('#accounts_all').html('there are no accounts right now');
+              $('#accounts_all').html('There are no accounts right now');
             }
           }
 
 
 
+        // deletes user on rails server
           <% @users.each do |user| %>
+
             $('#delete_<%=user.id%>').click(function () {
+
+              var approved = $(this).data();
+
               $.ajax({
                 url: "<%=account_path(user.id)%>",
                 type: "post",
@@ -99,7 +138,8 @@
                 data: {"_method":"delete"},
                 success: function(response) {
                   if (response.success) {
-                    removeRow(<%=user.id%>);
+                    debugger;
+                    removeRow(<%=user.id%>, approved);
                   }else {
                     alert('deleting subscriber info failed, sorry!');
                   }
@@ -109,11 +149,64 @@
           <% end %>
 
 
+
+      // APPROVING ACCOUNTS
+          // updates running account total
+          function updatePendingApprovals(pending_length) {
+
+            if (pending_length === 1){
+              var output = "1 account is awaiting approval";
+            } else {
+              var output = pending_length+ " accounts are awaiting approval";
+            }
+
+              $('#still_need_approve').html(output)
+          }
+
+
+
+          // for removing 'approve' button in account row
+          function removeApproveButton(id) {
+            $('#approve'+id).fadeOut();
+            pending_length--;
+
+            updatePendingApprovals(pending_length);
+
+            if(pending_length === 0) {
+              $('#still_need_approve').html('No accounts need approval right now.');
+            }
+          }
+
+          // changes :approve => true on rails server
+          <% @users.each do |user| %>
+            $('#approve_<%=user.id%>').click(function () {
+              event.preventDefault();
+
+              $.ajax({
+                url: "approve_account_path",
+                type: "PUT",
+                dataType: 'JSON',
+                data: {id: <%=user.id%>},
+                success: function(response) {
+                  if (response.success) {
+                    removeApproveButton(<%=user.id%>);
+                  }else {
+                    alert('updating user info failed, sorry!');
+                  }
+                }
+
+              });
+
+            });
+          <% end %>
+
+
+
         });
         </script>
 
 <% else %>
 
-  You do not have administrator privileges.
+  <p>You do not have administrator privileges.</p>
 
 <% end %>
