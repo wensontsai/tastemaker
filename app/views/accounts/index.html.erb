@@ -138,7 +138,6 @@
                 data: {"_method":"delete"},
                 success: function(response) {
                   if (response.success) {
-                    debugger;
                     removeRow(<%=user.id%>, approved);
                   }else {
                     alert('deleting subscriber info failed, sorry!');

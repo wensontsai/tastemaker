@@ -187,6 +187,9 @@
                 <input id="entered_zip" type=form value="enter zip code here"> </input>
                 <button id="zipcode_check" type=button> submit </button>
               </div>
+<br><br>
+              <div id="service_area">
+              </div>
           </article>
         </div>  <!-- /.row ends here -->
       </div>
@@ -299,14 +302,23 @@ $(document).ready(function() {
 
   //for zip code area check
     $("#zipcode_check").click(function(event) {
-      event.preventDefault;
+        event.preventDefault();
         var zipcode = $("#entered_zip").val();
 
+        var serviceArea = function(answer){
+          if(answer === 'yes'){
+            $('#service_area').html("Yes!  We are currently servicing your area!<br><br>Check out our products now!");
+          } else {
+            $('#service_area').html("Unfortunately we currently do not service your area. <br>But stay tuned!  We are expanding quickly!");
+          }
+        }
+
         $.ajax({
-          type: "POST",
-          url: ,
+          type: "GET",
+          url: "/zipcode_check",
           data: {zipcode: zipcode},
-          success: function(){
+          success: function(response){
+            serviceArea(response);
 
           }
         })

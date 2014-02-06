@@ -4,8 +4,10 @@ Tastemaker::Application.routes.draw do
   get "vendors/index"
   get "products/index"
   get "accounts/index"
+
   devise_for :admins
   devise_for :users
+
   root :to => "home#index"
 
   post "add_to_subscribers" => "subscribers#create", :via => :post
@@ -13,6 +15,14 @@ Tastemaker::Application.routes.draw do
 
   put "approve_account" => "accounts#approve_account", :via => :put
   resources :accounts
+
+  get "zipcode_check" => "home#zipcode_check"
+
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
