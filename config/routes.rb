@@ -1,5 +1,8 @@
 Tastemaker::Application.routes.draw do
 
+  get "carts/index"
+  get "vendors/index"
+  get "products/index"
   get "accounts/index"
   devise_for :admins
   devise_for :users
