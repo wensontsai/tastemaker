@@ -4460,6 +4460,7 @@ to {
 
 /*flash*/
 .alert-error {
+		z-index: 100;
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
@@ -4467,6 +4468,7 @@ to {
  }
 
 .alert-alert {
+		z-index: 100;
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
@@ -4474,6 +4476,7 @@ to {
  }
 
 .alert-success {
+		z-index: 100;
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
@@ -4481,6 +4484,7 @@ to {
  }
 
 .alert-notice {
+		z-index: 100;
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
