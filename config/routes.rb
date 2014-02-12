@@ -1,9 +1,6 @@
 Tastemaker::Application.routes.draw do
 
   get "carts/index"
-  get "vendors/index"
-  get "products/index"
-  get "accounts/index"
 
   devise_for :admins
   devise_for :users
@@ -17,6 +14,9 @@ Tastemaker::Application.routes.draw do
   resources :accounts
 
   get "zipcode_check" => "home#zipcode_check"
+
+  resources :products
+  resources :vendors
 
 
 

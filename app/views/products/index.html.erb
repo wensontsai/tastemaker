@@ -1,2 +1,82 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<!--******************** NAVBAR ********************-->
+    <div class="navbar-wrapper">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+            <h1 class="brand"><%= link_to "Tastemaker", root_path %></h1>
+            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+            <nav class="pull-right nav-collapse collapse">
+              <ul id="menu-main" class="nav">
+                <li><a title="portfolio" href="#portfolio">Tastebox</a></li>
+                <li><a title="services" href="#services">How it Works</a></li>
+                <li><a title="news" href="#news">Pricing</a></li>
+               <!--  <li><a title="team" href="#team">meet the team</a></li> -->
+                <li><a title="contact" href="#contact">Get Started</a></li>
+                <li id="login_info">
+                  <%= render 'layouts/user_widget' %>
+                </li>
+
+              </ul>
+            </nav>
+          </div>
+          <!-- /.container -->
+        </div>
+        <!-- /.navbar-inner -->
+      </div>
+      <!-- /.navbar -->
+    </div>
+    <!-- /.navbar-wrapper -->
+    <div id="top"></div>
+
+
+
+            <!--main content -->
+
+    <div class="body_stuff wrapper">
+      <div id="masonry">
+            <% @products = Product.all %>
+
+            <% @products.each do |product| %>
+              <div id='product_<%=product.name%>' class="msnry-item">
+                <ul>
+                  <li><img src="<%=product.photo%>"></li>
+                  <li><%=product.name%></li>
+                  <li><%=product.description%></li>
+                  <li>$<%=product.price%></li>
+                  <li>vendor id: <%=product.vendor_id%></li>
+                </ul>
+              </div>
+            <% end %>
+
+      </div>
+    </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  // var columns    = 3,
+  //       setColumns = function() { columns = $( window ).width() > 640 ? 3 : $( window ).width() > 320 ? 2 : 1; };
+
+  //   setColumns();
+  //   $( window ).resize( setColumns );
+
+  //   $( '#masonry' ).masonry(
+  //   {
+  //       itemSelector: '.msnry-item',
+  //       columnWidth:  function( containerWidth ) { return containerWidth / columns; }
+  //   });
+
+  $('#masonry').masonry({
+   columnWidth: 50,
+   itemSelector: '.msnry-item
+  })
+
+
+
+
+
+});
+</script>
+
